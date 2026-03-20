@@ -1,6 +1,6 @@
-# DXR Guideline Matcher
+# DXR Guideline Matcher 
 
-Maps DXR issues to SAP Fiori Design Guidelines. No API keys, no accounts, no cost.
+ Maps DXR issues to SAP Fiori Design Guidelines. No API keys, no accounts, no cost.
 
 ## How it works
 
