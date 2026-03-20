@@ -11,7 +11,7 @@
 
 The matcher ignores DXR dimension tags entirely. It searches the full Fiori guidelines corpus every time, so cross-dimensional matches surface naturally.
 
-## Deploy to Vercel
+## Deploy to Vercel  
 
 ```bash
 # 1. Push to GitHub
