@@ -62,7 +62,7 @@ function scoreEntry(entry, terms, expanded, bigrams, idf) {
 }
 
 // ─── COLORS ────────────────────────────────────────────────────────
-const T="#0A9A9A",TL="#F0F9F9",TD="#087070",D="#1D2D3E",G6="#556677",G4="#8C9BA8",G2="#DEE2E6",G1="#F0F2F4",G0="#F7F8FA";
+const T="#7B61FF",TL="#F0F9F9",TD="#087070",D="#1D2D3E",G6="#556677",G4="#8C9BA8",G2="#DEE2E6",G1="#F0F2F4",G0="#F7F8FA";
 
 // ─── UI ────────────────────────────────────────────────────────────
 export default function Home() {
@@ -104,10 +104,10 @@ export default function Home() {
     <div className="pg">
       <header className="hb"><div className="hi">
         <div className="hbr">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="white" fillOpacity="0.15"/><path d="M6 12l4 4 8-8" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          <div><div className="ht">Design Excellence Review</div><div className="hs">Guideline Matcher</div></div>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="white" fillOpacity="0.15"/><path d="M6 12l4 4 8-8" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <div><div className="ht">DXR / Fiori</div><div className="hs">Guideline Matcher</div></div>
         </div>
-        <div className="hbd">Core Design</div>
+        <div className="hbd">Core Design · SAP</div>
       </div></header>
 
       <div className="ct">
@@ -143,7 +143,7 @@ export default function Home() {
             </div>
             <div className="rl">{results.map((r,i)=>{const rs=r.score/mx;return(
               <div key={r.idx} className="rc">
-                <div className="rrc"><div className="rr">{i+1}</div><div className="rsb"><div className="rsf" style={{height:`${Math.round(rs*100)}%`,backgroundColor:rs>=0.7?T:rs>=0.4?"#E9730C":"#BB0000"}}/></div></div>
+                <div className="rrc"><div className="rr">{i+1}</div><div className="rsb"><div className="rsf" style={{height:`${Math.round(rs*100)}%`,backgroundColor:rs>=0.7?'#5B3FD9':rs>=0.4?"#E9730C":"#BB0000"}}/></div></div>
                 <div className="rcn">
                   <div className="rtr"><a href={r.url} target="_blank" rel="noopener noreferrer" className="rt">{r.title}</a>
                     <button className="bcs" onClick={()=>cp(r.url,i)} title="Copy URL">{copiedIdx===i?(<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#107E3E" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>):(<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>)}</button>
@@ -159,7 +159,7 @@ export default function Home() {
         )}
       </div>
 
-      <footer className="fb"><div className="fi">Design Excellence Review · Core Design Team · Fiori Guidelines v1-136 + iOS + Android</div></footer>
+      <footer className="fb"><div className="fi">DXR / Fiori Guideline Matcher · Core Design · SAP</div></footer>
       <style jsx>{css}</style>
     </div>
   );
@@ -167,44 +167,44 @@ export default function Home() {
 
 const css = `
   .pg{min-height:100vh;background:${G0};display:flex;flex-direction:column}
-  .hb{background:linear-gradient(135deg,${TD},${T});color:#fff;padding:0 20px}
-  .hi{max-width:720px;margin:0 auto;padding:18px 0;display:flex;align-items:center;justify-content:space-between}
+  .hb{background:linear-gradient(135deg,#1B1464,#5B3FD9,#7B61FF,#4A90D9);color:#fff;padding:0 20px}
+  .hi{max-width:720px;margin:0 auto;padding:32px 0;display:flex;align-items:center;justify-content:space-between}
   .hbr{display:flex;align-items:center;gap:12px}
-  .ht{font-size:16px;font-weight:700;letter-spacing:-0.2px}
-  .hs{font-size:12px;opacity:0.75;margin-top:1px}
+  .ht{font-size:22px;font-weight:700;letter-spacing:-0.3px}
+  .hs{font-size:14px;opacity:0.8;margin-top:3px;font-weight:400}
   .hbd{font-size:11px;font-weight:600;padding:4px 10px;border-radius:4px;background:rgba(255,255,255,0.15);letter-spacing:0.3px;text-transform:uppercase}
   .ct{max-width:720px;width:100%;margin:0 auto;padding:24px 20px 48px;flex:1}
   .sec{background:#fff;border:1px solid ${G2};border-radius:8px;padding:20px 24px;margin-bottom:16px}
-  .sl{font-size:13px;font-weight:600;color:${TD};text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
+  .sl{font-size:13px;font-weight:600;color:#5B3FD9;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
   .sh{font-size:13px;color:${G4};line-height:1.5;margin-bottom:10px}
   .kbd{display:inline-block;background:${G1};border:1px solid ${G2};border-radius:3px;padding:0 5px;font-size:11px;font-family:inherit;color:${G6};margin-left:4px}
   .ptg{display:flex;gap:0;border:1px solid ${G2};border-radius:6px;overflow:hidden;width:fit-content}
   .pb{padding:7px 14px;font-size:13px;font-weight:500;color:${G6};background:#fff;border:none;border-right:1px solid ${G2};cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;font-family:inherit}
   .pb:last-child{border-right:none}.pb:hover{background:${G0}}
-  .pa{background:${T}!important;color:#fff!important}
+  .pa{background:#5B3FD9!important;color:#fff!important}
   .pa .pc{background:rgba(255,255,255,0.2);color:#fff}
   .pc{font-size:11px;background:${G1};color:${G4};padding:1px 6px;border-radius:10px;font-weight:600}
   .ta{width:100%;padding:12px 14px;font-size:14px;line-height:1.6;border:1px solid ${G2};border-radius:6px;resize:vertical;font-family:inherit;color:${D};background:${G0};box-sizing:border-box;outline:none;transition:border-color .15s,box-shadow .15s}
-  .ta:focus{border-color:${T};box-shadow:0 0 0 3px rgba(10,154,154,0.1);background:#fff}
+  .ta:focus{border-color:#7B61FF;box-shadow:0 0 0 3px rgba(123,97,255,0.12);background:#fff}
   .ta::placeholder{color:#B0BAC4}
   .ar{display:flex;align-items:center;gap:10px;margin-top:12px}
-  .bp{padding:9px 22px;font-size:13px;font-weight:600;color:#fff;background:${T};border:none;border-radius:6px;cursor:pointer;transition:background .15s;font-family:inherit}
-  .bp:hover:not(:disabled){background:${TD}}.bp:disabled{opacity:0.5;cursor:not-allowed}
+  .bp{padding:9px 22px;font-size:13px;font-weight:600;color:#fff;background:#5B3FD9;border:none;border-radius:6px;cursor:pointer;transition:background .15s;font-family:inherit}
+  .bp:hover:not(:disabled){background:#4A2FC2}.bp:disabled{opacity:0.5;cursor:not-allowed}
   .bg{padding:9px 16px;font-size:13px;font-weight:500;color:${G6};background:transparent;border:1px solid ${G2};border-radius:6px;cursor:pointer;transition:background .15s;font-family:inherit}
   .bg:hover{background:${G1}}
   .rb{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px}
-  .bca{padding:7px 14px;font-size:12px;font-weight:600;color:${T};background:${TL};border:1px solid ${T}33;border-radius:6px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;font-family:inherit;white-space:nowrap;flex-shrink:0}
-  .bca:hover{background:#E0F4F4}
+  .bca{padding:7px 14px;font-size:12px;font-weight:600;color:#5B3FD9;background:#F3F0FF;border:1px solid #5B3FD933;border-radius:6px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;font-family:inherit;white-space:nowrap;flex-shrink:0}
+  .bca:hover{background:#EDE8FF}
   .rl{display:flex;flex-direction:column;gap:2px}
   .rc{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid ${G1}}
   .rc:last-child{border-bottom:none}
   .rrc{display:flex;flex-direction:column;align-items:center;gap:6px;width:28px;flex-shrink:0;padding-top:2px}
-  .rr{width:24px;height:24px;border-radius:50%;background:${TL};color:${T};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+  .rr{width:24px;height:24px;border-radius:50%;background:#F3F0FF;color:#5B3FD9;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
   .rsb{width:4px;flex:1;min-height:20px;background:${G1};border-radius:2px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
   .rsf{width:100%;border-radius:2px;transition:height .3s ease}
   .rcn{flex:1;min-width:0}
   .rtr{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
-  .rt{font-size:14px;font-weight:600;color:${T};text-decoration:none;line-height:1.3}
+  .rt{font-size:14px;font-weight:600;color:#5B3FD9;text-decoration:none;line-height:1.3}
   .rt:hover{text-decoration:underline}
   .bcs{padding:3px 5px;border:1px solid ${G2};border-radius:3px;background:#fff;cursor:pointer;color:${G4};display:flex;align-items:center;flex-shrink:0;transition:all .15s}
   .bcs:hover{background:${G1};border-color:${G4}}
@@ -214,9 +214,9 @@ const css = `
   .rbc{font-size:11px;color:${G4};margin-top:5px}
   .rd{font-size:12px;color:${G6};margin-top:4px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .ru{font-size:11px;color:${G4};text-decoration:none;margin-top:6px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .ru:hover{color:${T}}
+  .ru:hover{color:#5B3FD9}
   .ctr{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:400px}
-  .spin{width:28px;height:28px;border:3px solid ${G2};border-top-color:${T};border-radius:50%;animation:sp .8s linear infinite}
+  .spin{width:28px;height:28px;border:3px solid ${G2};border-top-color:#7B61FF;border-radius:50%;animation:sp .8s linear infinite}
   @keyframes sp{to{transform:rotate(360deg)}}
   .lt{margin-top:12px;color:${G4};font-size:13px}
   .eb{padding:12px 16px;background:#FFF1F1;border:1px solid #FFCDD2;border-left:4px solid #BB0000;border-radius:6px;font-size:13px;color:#BB0000;margin-bottom:16px}
