@@ -87,7 +87,7 @@ export default function Home() {
     if (!issueText.trim() || !corpus || !idf) return;
     setError(null);
     const { terms, expanded, bigrams } = extractQueryTerms(issueText);
-    const filtered = platform === "All" ? corpus : corpus.filter(e => e.platform === platform);
+    const filtered = platform === "All" ? corpus : platform === "Mobile" ? corpus.filter(e => e.platform === "iOS" || e.platform === "Android") : corpus.filter(e => e.platform === platform);
     const scored = filtered.map((entry, idx) => ({ ...entry, idx, score: scoreEntry(entry, terms, expanded, bigrams, idf) })).filter(e => e.score > 0).sort((a, b) => b.score - a.score).slice(0, 10);
     setResults(scored);
   }, [issueText, corpus, idf, platform]);
@@ -113,9 +113,9 @@ export default function Home() {
       <div className="ct">
         <div className="sec">
           <div className="sl">Platform</div>
-          <div className="ptg">{["All","Web","iOS","Android"].map(p=>(
+          <div className="ptg">{["All","Web","Mobile"].map(p=>(
             <button key={p} className={`pb ${platform===p?"pa":""}`} onClick={()=>{setPlatform(p);setResults(null);}}>
-              {p}{corpus&&<span className="pc">{p==="All"?corpus.length:corpus.filter(e=>e.platform===p).length}</span>}
+              {p}{corpus&&<span className="pc">{p==="All"?corpus.length:p==="Mobile"?corpus.filter(e=>e.platform==="iOS"||e.platform==="Android").length:corpus.filter(e=>e.platform===p).length}</span>}
             </button>
           ))}</div>
         </div>
@@ -148,7 +148,7 @@ export default function Home() {
                   <div className="rtr"><a href={r.url} target="_blank" rel="noopener noreferrer" className="rt">{r.title}</a>
                     <button className="bcs" onClick={()=>cp(r.url,i)} title="Copy URL">{copiedIdx===i?(<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#107E3E" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>):(<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>)}</button>
                   </div>
-                  <div className="rtg">{r.platform&&platform==="All"&&<span className="tg tp">{r.platform}</span>}{r.type&&<span className="tg tt">{r.type}</span>}{r.category&&<span className="tg tc">{r.category}</span>}</div>
+                  <div className="rtg">{r.platform&&platform!=="Web"&&<span className="tg tp">{r.platform}</span>}{r.type&&<span className="tg tt">{r.type}</span>}{r.category&&<span className="tg tc">{r.category}</span>}</div>
                   {r.breadcrumbs&&<div className="rbc">{r.breadcrumbs}</div>}
                   {r.description&&<div className="rd">{r.description}</div>}
                   <a href={r.url} target="_blank" rel="noopener noreferrer" className="ru">{r.url}</a>
